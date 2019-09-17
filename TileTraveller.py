@@ -8,4 +8,5 @@ Birt á skjáinn eru áttinar sem notandi getur farið í
 
     Hver átt hækkar eða lækkar, x eða y gildið sem mun merkja staðsetningu notanda.
         Þegar x og y eru ákveðin gildi þá mun birta á skjáinn viðeigandi áttir sem notandi má fara í.
+        (Þar sem sumar staðsetningar þurfa að skila sömu upplýsingum væri gott að gera sameiginlegt fall)
 '''
