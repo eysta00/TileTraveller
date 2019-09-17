@@ -13,57 +13,100 @@ Birt á skjáinn eru áttinar sem notandi getur farið í
 #north + 1, south -1
 #east + 3, west -3
 
-direction_input = ""
+
 position = 1
 
 def Only_North(direction):
-    print("You can travel: (N)orth.")
-    return position + 1 
+    if direction == "n": 
+        return position + 1 
+    else: 
+        print("Not a valid direction!")
+        return Only_North(direction_input())
 
 def North_South(direction):
-    print("You can travel: (N)orth or (S)outh.")
     if direction == "n":
-        return + 1
-    elif direction == "s"
-        return - 1
+        return position + 1
+    elif direction == "s":
+        return position - 1
+    else: 
+        print("Not a valid direction!")
+        return North_South(direction_input())
 
 def North_East_South(direction):
-    print("You can travel: (N)orth or (E)ast or (S)outh.")
+    if direction == "n":
+        return position + 1
+    elif direction == "e":
+        return position + 3
+    elif direction == "s":
+        return position - 1
+    else: 
+        print("Not a valid direction!")
+        return North_East_South(direction_input())
 
 def South_West(direction):
-    print("You can travel: (S)outh or (W)est.")
-    return 3, 1
+    if direction == "s":
+        return position - 1
+    elif direction == "w":
+        return position - 3
+    else: 
+        print("Not a valid direction!")
+        return South_West(direction_input())
 
 def South_East(direction):
-    print("You can travel: (E)ast or (S)outh.")
-    return 2, 2
+    if direction == "s":
+        return position - 1
+    elif direction == "e":
+        return position + 3
+    else: 
+        print("Not a valid direction!")
+        return South_East(direction_input())
 
 def West_East(direction):
-    print("You can travel: (E)ast or (W)est.")
+    if direction == "w":
+        return position - 3
+    elif direction == "e":
+        return position + 3
+    else: 
+        print("Not a valid direction!")
+        return West_East(direction_input())
 
+def direction_input():
+    direction_input = input("Direction: ").lower()
+    return direction_input
 
 while True:
+    if position == 1:
+        print("You can travel: (N)orth.")
+        position = Only_North(direction_input())
 
-    direction_input = input("Direction: ").lower()
-    while direction_input == "n", "s", "w", "e":
-        if position == 1:
-            position = Only_North()
-        elif position == 2:
-            position = North_East_South()
-        elif position == 3:
-            position = South_East()
-        elif position == 4:
-            position = Only_North()
-        elif position == 5:
-            position = South_West()
-        elif position == 6:
-            position = West_East()
-        elif position == 8:
-            position = North_South()
-        elif position == 9:
-            position = South_West()
-        else: #position == 7
-            print("Victory!")
-            break
-    else:
-        print("Invalid direction")
+    elif position == 2:
+        print("You can travel: (N)orth or (E)ast or (S)outh.")
+        position = North_East_South(direction_input())
+
+    elif position == 3:
+        print("You can travel: (E)ast or (S)outh.")
+        position = South_East(direction_input())
+
+    elif position == 4:
+        print("You can travel: (N)orth.")
+        position = Only_North(direction_input())
+
+    elif position == 5:
+        print("You can travel: (S)outh or (W)est.")
+        position = South_West(direction_input())
+
+    elif position == 6:
+        print("You can travel: (E)ast or (W)est.")
+        position = West_East(direction_input())
+
+    elif position == 8:
+        print("You can travel: (N)orth or (S)outh.")
+        position = North_South(direction_input())
+
+    elif position == 9:
+        print("You can travel: (S)outh or (W)est.")
+        position = South_West(direction_input())
+
+    else: #position == 7
+        print("Victory!")
+        break
