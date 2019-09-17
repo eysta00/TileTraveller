@@ -1,5 +1,6 @@
-#Eysteinn Örn Jónsson & Úlfur Örn Björnsson
+# Eysteinn Örn Jónsson & Úlfur Örn Björnsson
 # 17/9/19 - Assignment 8
+# https://github.com/eysta00/TileTraveller
 '''
 Birt á skjáinn eru áttinar sem notandi getur farið í
     Byður notenda um inntak fyrir áttina sem hann vill ferðast í (n, s, w, e).
@@ -10,11 +11,12 @@ Birt á skjáinn eru áttinar sem notandi getur farið í
         Þegar x og y eru ákveðin gildi þá mun birta á skjáinn viðeigandi áttir sem notandi má fara í.
         (Þar sem sumar staðsetningar þurfa að skila sömu upplýsingum væri gott að gera sameiginlegt fall)
 '''
-#north + 1, south -1
-#east + 3, west -3
-
-
 position = 1
+
+# each tile has been assigned a value between 1 and 9. 
+# Adding or subtracting 1 to the position is equivalent to moving up or down respectively.
+# Adding or subtracting 3 to the position is equivalent to moving right or left respectively.
+# If an invalid input is entered the function is run again and the user is asked for another input. (Recursion)
 
 def Only_North(direction):
     if direction == "n": 
@@ -23,7 +25,7 @@ def Only_North(direction):
         print("Not a valid direction!")
         return Only_North(direction_input())
 
-def North_South(direction):
+def North_South(direction): # North is adding 1 and south is subtracting 1
     if direction == "n":
         return position + 1
     elif direction == "s":
@@ -61,7 +63,7 @@ def South_East(direction):
         print("Not a valid direction!")
         return South_East(direction_input())
 
-def West_East(direction):
+def West_East(direction): # West is subtracting 3 and east is adding 3
     if direction == "w":
         return position - 3
     elif direction == "e":
@@ -74,6 +76,7 @@ def direction_input():
     direction_input = input("Direction: ").lower()
     return direction_input
 
+# These if-else statements check the position and run their respective function.
 while True:
     if position == 1:
         print("You can travel: (N)orth.")
@@ -107,6 +110,6 @@ while True:
         print("You can travel: (S)outh or (W)est.")
         position = South_West(direction_input())
 
-    else: #position == 7
+    else: #position == 7 # the only other possible position is 7
         print("Victory!")
-        break
+        break # Victory has been achieved and the loop is terminated.
