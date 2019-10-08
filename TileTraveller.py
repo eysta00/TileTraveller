@@ -151,6 +151,7 @@ while loop_bool:
         loop_input = input("Play again (y/n): ").lower()
         if loop_input == "y":
             position = 1
+            coins = 0
         else:
             loop_bool = False
         # Victory has been achieved and the loop is terminated.
