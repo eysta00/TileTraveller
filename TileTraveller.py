@@ -23,16 +23,16 @@ def print_available_dir(available_dir):
     print("You can travel:", end=" ")
     for c in available_dir:
         if c == "n":
-            print("(N)orth", end=" ")
+            print("(N)orth", end="")
         elif c == "e":
-            print("(E)ast", end=" ")
+            print("(E)ast", end="")
         elif c == "s":
-            print("(S)outh", end=" ")
+            print("(S)outh", end="")
         elif c == "w":
-            print("(W)est", end=" ")
+            print("(W)est", end="")
         if c != available_dir[-1]:
-            print("or", end=" ")
-    print("")
+            print(" or ", end="")
+    print(".")
 
 def pull_lever(coins):
     user_input = input("Pull a lever (y/n): ").lower()
@@ -47,6 +47,7 @@ def Only_North(direction):
         return position + 1 
     else: 
         print("Not a valid direction!")
+        print_available_dir("n")
         return Only_North(direction_input())
 
 def North_South(direction): # North is adding 1 and south is subtracting 1
@@ -56,6 +57,7 @@ def North_South(direction): # North is adding 1 and south is subtracting 1
         return position - 1
     else: 
         print("Not a valid direction!")
+        print_available_dir("ns")
         return North_South(direction_input())
 
 def North_East_South(direction):
@@ -67,6 +69,7 @@ def North_East_South(direction):
         return position - 1
     else: 
         print("Not a valid direction!")
+        print_available_dir("nes")
         return North_East_South(direction_input())
 
 def South_West(direction):
@@ -76,6 +79,7 @@ def South_West(direction):
         return position - 3
     else: 
         print("Not a valid direction!")
+        print_available_dir("sw")
         return South_West(direction_input())
 
 def South_East(direction):
@@ -85,6 +89,7 @@ def South_East(direction):
         return position + 3
     else: 
         print("Not a valid direction!")
+        print_available_dir("es")
         return South_East(direction_input())
 
 def West_East(direction): # West is subtracting 3 and east is adding 3
@@ -94,6 +99,7 @@ def West_East(direction): # West is subtracting 3 and east is adding 3
         return position + 3
     else: 
         print("Not a valid direction!")
+        print_available_dir("ew ")
         return West_East(direction_input())
 
 def direction_input():
