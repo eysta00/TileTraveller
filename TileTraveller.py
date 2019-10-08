@@ -108,7 +108,8 @@ def direction_input():
 
 # These if-else statements check the position and run their respective function.
 coins = 0
-while True:
+loop_bool = True
+while loop_bool:
     if position == 1:
         print_available_dir("n")
         position = Only_North(direction_input())   
@@ -147,4 +148,9 @@ while True:
 
     else: #position == 7 # the only other possible position is 7
         print("Victory! Total coins {}.".format(coins))
-        break # Victory has been achieved and the loop is terminated.
+        loop_input = input("Play again (y/n): ").lower()
+        if loop_input == "y":
+            position = 1
+        else:
+            loop_bool = False
+        # Victory has been achieved and the loop is terminated.
