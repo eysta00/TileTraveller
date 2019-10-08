@@ -37,7 +37,9 @@ def print_available_dir(available_dir):
     print(".")
 
 def pull_lever(coins):
-    #user_input = input("Pull a lever (y/n): ").lower()
+    ''' The function takes in a user input or a random choice is made, if yes then
+    you get a coin if no you dont get a coin and returns coins '''
+    # user_input = input("Pull a lever (y/n): ").lower()
     user_input = random.choice("yn")
     print("Pull a lever (y/n):", user_input)
     if user_input == "y":
@@ -47,7 +49,8 @@ def pull_lever(coins):
     else:
         return coins
 
-def Only_North(direction, valid_moves):
+def Only_North(direction, valid_moves): # Valid moves is in all direction functions
+    # and one is added each time the function is called, this counts all valid and invalid movese.
     valid_moves += 1
     if direction == "n": 
         return position + 1, valid_moves
@@ -114,7 +117,7 @@ def West_East(direction, valid_moves): # West is subtracting 3 and east is addin
         return West_East(direction_input(), valid_moves)
 
 def direction_input():
-    #direction_input = input("Direction: ").lower()
+    # direction_input = input("Direction: ").lower()
     direction_input = random.choice("nesw")
     print("Direction:", direction_input)
     return direction_input
