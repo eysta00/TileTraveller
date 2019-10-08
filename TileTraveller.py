@@ -19,6 +19,7 @@ position = 1
 # If an invalid input is entered the function is run again and the user is asked for another input. (Recursion)
 
 def print_available_dir(available_dir):
+    ''' The function takes in a string and prints out the possible directions '''
     print("You can travel:", end=" ")
     for c in available_dir:
         if c == "n":
@@ -33,6 +34,14 @@ def print_available_dir(available_dir):
             print("or", end=" ")
     print("")
 
+def pull_lever(coins):
+    user_input = input("Pull a lever (y/n): ").lower()
+    if user_input == "y":
+        coins += 1
+        print("You received 1 coin, your total is now {}.".format(coins))
+        return coins
+    else:
+        return coins
 def Only_North(direction):
     if direction == "n": 
         return position + 1 
@@ -92,12 +101,14 @@ def direction_input():
     return direction_input
 
 # These if-else statements check the position and run their respective function.
+coins = 0
 while True:
     if position == 1:
         print_available_dir("n")
-        position = Only_North(direction_input())
+        position = Only_North(direction_input())   
 
     elif position == 2:
+        coins = pull_lever(coins)
         print_available_dir("nes")
         position = North_East_South(direction_input())
 
@@ -110,14 +121,17 @@ while True:
         position = Only_North(direction_input())
 
     elif position == 5:
+        coins = pull_lever(coins)
         print_available_dir("sw")
         position = South_West(direction_input())
 
     elif position == 6:
+        coins = pull_lever(coins)
         print_available_dir("ew")
         position = West_East(direction_input())
 
     elif position == 8:
+        coins = pull_lever(coins)
         print_available_dir("ns")
         position = North_South(direction_input())
 
@@ -126,6 +140,5 @@ while True:
         position = South_West(direction_input())
 
     else: #position == 7 # the only other possible position is 7
-        print("Victory!")
-
+        print("Victory! Total coins {}.".format(coins))
         break # Victory has been achieved and the loop is terminated.
